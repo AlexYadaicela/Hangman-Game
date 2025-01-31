@@ -1,0 +1,103 @@
+*,
+*::before, 
+*::after{
+    box-sizing: border-box;
+}
+:root{
+    --clr-neutral-100: #D9DFC6;
+    --ff-primary: "Poppins", serif; 
+}
+
+body{
+    background-color: var(--clr-neutral-100); 
+    font-family: var(--ff-primary);
+}
+
+img,
+svg{
+    max-inline-size: 100%;
+    block-size: auto;
+}
+#game_display{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 2rem;
+    text-align: center;
+    gap: 1rem; 
+    span{
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        font-weight: bolder;
+        width: 3rem;
+        height: 3rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;        
+    }
+}
+
+#category_display{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lives{
+    display: flex; 
+    gap: 0.2rem;
+    svg{
+        width: 2rem;
+        fill: #A31D1D;
+        /* filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));  */
+    }
+}
+
+
+.keyboard{
+    margin-inline: auto;
+    /* border: 1px solid black;  */
+    border-radius: 10px;
+    width: 45rem;
+    padding-block: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.0) 0px 7px 4px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    > * {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        gap: 1rem; 
+    }
+    
+    .middle_row{
+        margin-block: 1rem; 
+    }
+    .key{
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        height: 3rem;
+        width: 3rem;
+        font-variant: small-caps;
+        font-weight: 500;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 0; 
+        color: hsl(140, 3%, 40%);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.0) 0px 7px 4px -3px, rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
+    }
+    
+    .key[data-pressed="false"]:hover{
+        cursor: pointer;
+        /* opacity: 0.8;  */
+        box-shadow: rgb(166, 172, 179) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.2) -3px -3px 6px 1px inset;
+    }
+
+    .key[data-pressed="true"]{
+        /* opacity: 0.8; */
+        box-shadow: rgb(166, 172, 179) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.4) -3px -3px 6px 1px inset;        
+
+    }
+}
+
+@keyframes keypressed{
+    50%{box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset; ;}
+}
