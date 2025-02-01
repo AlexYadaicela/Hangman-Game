@@ -70,7 +70,7 @@ function generateWord(){
     return word; 
 }
 
-const word = generateWord(); 
+const word = generateWord().toLowerCase(); 
 const letters = [...word];
 
 const wordPlacement = document.querySelectorAll('#game_display > *'); 
@@ -107,14 +107,15 @@ function pressedKey(e){
         const found = (word.indexOf(e.target.getAttribute('data-value')) !== -1) ? true : false;
         switch(found){
             case true:
-                correctAttempts++;
-                if(correctAttempts === word.length){
-                    stopGame(); 
-                }
+                
                 e.target.setAttribute('data-correct', 'true');  
                 e.target.style.color = "green"; 
                 const guess = e.target.getAttribute('data-value'); 
                 correctLetterPosition(guess);                 
+
+                if(correctAttempts === word.length){
+                    stopGame(); 
+                }
                 break; 
             case false: 
                 if(numOfTries === 6){
@@ -137,7 +138,8 @@ function revealWord(){
     
 function correctLetterPosition(guess){
     letters.forEach((letter, index) => {
-        if(guess === letter.toLowerCase()){
+        if(guess === letter){
+            correctAttempts++; 
             wordPlacement[index].textContent = `${guess}`; 
         }
     });
